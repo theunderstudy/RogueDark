@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class AIUnit : Unit
 {
-    public override void StartMove()
+    public override void Move()
     {
-        base.StartMove();
+        base.Move();
 
-        TargetUnit = UnitManager.Instance.GetNearestUnit(this);
-
-        Path = UnitManager.Instance.GetPathToUnit(this , TargetUnit);
-
-        Types.HighlightTiles(Path , UnitType == UnitType.red ? Color.red : Color.blue );
+       
 
         
     }

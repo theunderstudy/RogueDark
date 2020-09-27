@@ -196,6 +196,7 @@ public class Grid : Singleton<Grid>
 
                     m_Path.Add(_PathTile);
                     // Goal found, create path
+                    m_Path.Remove(startTile);
                     return m_Path;
                 }
                 _newH = GetHeuristic(_surroundingTile.Key, goalTile.Key);

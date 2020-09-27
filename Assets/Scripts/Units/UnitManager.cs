@@ -27,7 +27,10 @@ public class UnitManager : Singleton<UnitManager>
 
     private void Start()
     {
-        Wait(0.5f , ShowRandomPath);
+        foreach (Unit unit in AllUnits)
+        {
+            unit.StartNextAction();
+        }
     }
     private void Update()
     {
@@ -45,10 +48,10 @@ public class UnitManager : Singleton<UnitManager>
             }
         }
     }
-    void ShowRandomPath()
+    void StartNextTurn()
     {
-        AllUnits[Random.Range(0, AllUnits.Count)].StartMove();
-        Wait(0.5f , ShowRandomPath);
+        AllUnits[Random.Range(0, AllUnits.Count)].Move();
+        Wait(0.5f , StartNextTurn);
     }
 
     void Wait(float time, WaitCB CB)
@@ -71,6 +74,15 @@ public class UnitManager : Singleton<UnitManager>
         return Grid.Instance.GetPath(start.GetCurrentTile() , end.GetCurrentTile());
     }
 
+    public List<Unit> GetUnitsInRange(Unit start, int range)
+    {
+        List<Unit> _units = new List<Unit>();
+
+       
+
+
+        return _units;
+    }
     public Unit GetNearestUnit(Unit start)
     {
         // todo: check path to target
